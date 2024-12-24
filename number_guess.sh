@@ -18,3 +18,11 @@ else
   IFS='|' read USER_ID GAMES_PLAYED BEST_GAME <<< "$USER_QUERY"
   echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
+
+
+# Generate a random number
+SECRET_NUMBER=$(( RANDOM % 1000 + 1 ))
+echo "Guess the secret number between 1 and 1000:"
+
+# Initialize guess counter
+GUESSES=0
