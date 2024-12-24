@@ -59,3 +59,10 @@ fi
 
 # Insert game data
 INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(user_id, guesses) VALUES($USER_ID, $GUESSES)")
+
+# Update user statistics
+if [[ -z $BEST_GAME || $GUESSES -lt $BEST_GAME ]]; then
+  UPDATE_USER_RESULT=$($PSQL "UPDATE users SET games_played = games_played + 1, best_game = $GUESSES WHERE user_id = $USER_ID")
+else
+  UPDATE_USER_RESULT=$($PSQL "UPDATE users SET games_played = games_played + 1 WHERE user_id = $USER_ID")
+fi
