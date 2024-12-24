@@ -51,3 +51,8 @@ while true; do
     break
   fi
 done
+
+# Get user ID if it's a new user
+if [[ -z $USER_ID ]]; then
+  USER_ID=$($PSQL "SELECT user_id FROM users WHERE username='$USERNAME'")
+fi
