@@ -56,3 +56,6 @@ done
 if [[ -z $USER_ID ]]; then
   USER_ID=$($PSQL "SELECT user_id FROM users WHERE username='$USERNAME'")
 fi
+
+# Insert game data
+INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(user_id, guesses) VALUES($USER_ID, $GUESSES)")
